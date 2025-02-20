@@ -1,0 +1,11 @@
+name: IAM-auto
+description: automation for user management
+runtime:
+  name: python
+  options:
+    toolchain: pip
+    virtualenv: venv
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-python
