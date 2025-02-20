@@ -1,5 +1,5 @@
-name: IAM-auto
-description: automation for user management
+name: Create_users
+description: user creation
 runtime:
   name: python
   options:

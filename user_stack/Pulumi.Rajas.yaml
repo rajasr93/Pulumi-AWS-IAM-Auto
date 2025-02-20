@@ -1,0 +1,5 @@
+config:
+  aws:region: us-east-1
+  Create_users:username: Rishabh
+  Create_users:groups: SuperAdmin
+  Create_users:createKey: "yes"

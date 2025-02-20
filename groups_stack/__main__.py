@@ -2,7 +2,7 @@ import json
 import pulumi
 import pulumi_aws as aws
 
-# 1) Define the role-to-actions mapping from your table
+# Map each role (group) to the custom actions it should allow.
 roles_policies = {
     "Beneficiary": [
         "application:ViewProfile",
@@ -43,20 +43,20 @@ roles_policies = {
         "application:ViewProfile",
         "application:EditProfile",
         "application:ManageRoles"
-    ]
+    ],
 }
 
-# 2) Create a group and inline policy for each role
+# Create an IAM Group and attach an inline policy for each role
 for role_name, actions in roles_policies.items():
     # Create the IAM group
-    group = aws.iam.Group(role_name,
-        name=role_name,
-        path="/system/"
-        # If your Pulumi AWS provider supports it, you can add tags:
-        # tags={"Name": role_name}
+    group = aws.iam.Group(
+        role_name,             # Pulumi resource name
+        name=role_name,        # Actual IAM group name in AWS
+        path="/system/",
+        # tags={"Name": role_name},  # If supported by your Pulumi AWS provider
     )
 
-    # Build the inline policy document for this role
+    # Build the inline policy document
     policy_doc = {
         "Version": "2012-10-17",
         "Statement": [{
@@ -67,24 +67,8 @@ for role_name, actions in roles_policies.items():
     }
 
     # Attach the inline policy to the group
-    group_policy = aws.iam.GroupPolicy(
+    aws.iam.GroupPolicy(
         f"{role_name}-policy",
         group=group.name,
-        policy=json.dumps(policy_doc)
+        policy=json.dumps(policy_doc),
     )
-
-# 3) Example: Create a test user and assign them to a group
-#    (Remove or adapt this if you don’t want a test user)
-test_user = aws.iam.User(
-    "testUser",
-    name="testUser",
-    path="/system/",
-    tags={"Name": "testUser"},
-)
-
-# Assign the user to one of the groups (e.g., "Beneficiary")
-membership = aws.iam.UserGroupMembership(
-    "testUserMembership",
-    user=test_user.name,
-    groups=["Beneficiary"],
-)
