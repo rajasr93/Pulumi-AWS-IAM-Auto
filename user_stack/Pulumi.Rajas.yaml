@@ -1,6 +1,6 @@
 config:
-  aws:region: us-east-1
-  Create_users:username: Rajas
+  Create_users:createKey: 'no'
   Create_users:groups: Volunteer
-  Create_users:createKey: "no"
+  Create_users:username: Rajas
   Create_users:users: '{}'
+  aws:region: us-east-1
