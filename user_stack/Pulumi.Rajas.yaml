@@ -3,4 +3,4 @@ config:
   Create_users:username: Rajas
   Create_users:groups: Volunteer
   Create_users:createKey: "no"
-  Create_users:users: '{"Admin123": {"groups": ["SuperAdmin"], "create_key": "yes"}, "Rajas": {"groups": ["Volunteer"], "create_key": "yes"}, "Rishabh": {"groups": ["Admin"], "create_key": "yes"}}'
+  Create_users:users: '{}'
