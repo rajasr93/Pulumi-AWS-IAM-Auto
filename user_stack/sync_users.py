@@ -68,7 +68,9 @@ def main():
     else:
         print("No new users added to Pulumi config")
     
+    subprocess.run(["pulumi","refresh"])
     print("Sync complete!")
+
 
 if __name__ == "__main__":
     main()

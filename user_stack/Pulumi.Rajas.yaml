@@ -1,9 +1,2 @@
 config:
-  Create_users:users: '{"Admin": {"groups": [], "create_key": "yes", "has_console_access":
-    "no", "path": "/"}, "Jayant": {"groups": ["Volunteer"], "create_key": "no", "has_console_access":
-    "no", "path": "/"}, "Rajas": {"groups": ["Volunteer"], "create_key": "no", "has_console_access":
-    "no", "path": "/"}, "Rish": {"groups": ["Volunteer"], "create_key": "no", "has_console_access":
-    "no", "path": "/"}, "Rishabh": {"groups": ["SuperAdmin"], "create_key": "yes",
-    "has_console_access": "no", "path": "/"}, "test111": {"groups": ["Volunteer"],
-    "create_key": "yes", "has_console_access": "no", "path": "/"}, "User": {"groups":
-    ["Volunteer"], "create_key": "no", "has_console_access": "no", "path": "/"}}'
+  Create_users:users: '{"Admin": {"groups": [], "create_key": "yes", "has_console_access": "no", "path": "/"}, "Rajas": {"groups": ["Volunteer"], "create_key": "yes", "has_console_access": "no", "path": "/system/"}, "Sam": {"groups": ["Admin"], "create_key": "yes", "has_console_access": "no", "path": "/system/"}, "test1": {"groups": ["Volunteer"], "create_key": "yes", "has_console_access": "yes", "path": "/system/"}, "Raj": {"groups": ["beneficiary"], "create_key": "yes", "has_console_access": "yes", "path": "/system/"}}'

@@ -2,73 +2,102 @@ import json
 import pulumi
 import pulumi_aws as aws
 
-# Map each role (group) to the custom actions it should allow.
-roles_policies = {
+# Map each role (group) to the custom application actions it should allow
+app_roles_policies = {
     "Beneficiary": [
-        "application:ViewProfile",
-        "application:EditProfile",
-        "application:SubmitRequest"
+        "ViewProfile",
+        "EditProfile",
+        "SubmitRequest"
     ],
     "Volunteer": [
-        "application:ViewProfile",
-        "application:EditProfile",
-        "application:AcceptRequest"
+        "ViewProfile",
+        "EditProfile",
+        "AcceptRequest"
     ],
     "Steward": [
-        "application:ViewProfile",
-        "application:EditProfile",
-        "application:AcceptRequest",
-        "application:ManageRoles"
+        "ViewProfile",
+        "EditProfile",
+        "AcceptRequest",
+        "ManageRoles"
     ],
     "Admin": [
-        "application:ViewProfile",
-        "application:EditProfile",
-        "application:AcceptRequest",
-        "application:DeleteRequest"
+        "ViewProfile",
+        "EditProfile",
+        "AcceptRequest",
+        "DeleteRequest"
     ],
     "SuperAdmin": [
-        "application:ViewProfile",
-        "application:EditProfile",
-        "application:AcceptRequest",
-        "application:DeleteRequest",
-        "application:ManageRoles",
-        "application:ManageAdmin",
-        "application:ManageIntegrations",
-        "application:ManageDashboard",
-        "application:MatchRequests",
-        "application:ViewReports",
-        "application:ManageUsers"
+        "ViewProfile",
+        "EditProfile",
+        "AcceptRequest",
+        "DeleteRequest",
+        "ManageRoles",
+        "ManageAdmin",
+        "ManageIntegrations",
+        "ManageDashboard",
+        "MatchRequests",
+        "ViewReports",
+        "ManageUsers"
     ],
     "CharityOrg": [
-        "application:ViewProfile",
-        "application:EditProfile",
-        "application:ManageRoles"
+        "ViewProfile",
+        "EditProfile",
+        "ManageRoles"
     ],
 }
 
-# Create an IAM Group and attach an inline policy for each role
-for role_name, actions in roles_policies.items():
+# Map each role to standard AWS IAM permissions
+aws_roles_policies = {
+    "Beneficiary": [],
+    "Volunteer": ["iam:ChangePassword", "iam:GetAccountPasswordPolicy"],
+    "Steward": ["iam:ChangePassword", "iam:GetAccountPasswordPolicy"],
+    "Admin": ["iam:ChangePassword", "iam:GetAccountPasswordPolicy"],
+    "SuperAdmin": ["iam:ChangePassword", "iam:GetAccountPasswordPolicy"],
+    "CharityOrg": ["iam:ChangePassword", "iam:GetAccountPasswordPolicy"],
+}
+
+# Create an IAM Group and attach policies for each role
+for role_name, app_actions in app_roles_policies.items():
     # Create the IAM group
     group = aws.iam.Group(
         role_name,             # Pulumi resource name
         name=role_name,        # Actual IAM group name in AWS
         path="/system/",
-        # tags={"Name": role_name},  # If supported by your Pulumi AWS provider
     )
 
-    # Build the inline policy document
-    policy_doc = {
+    # Get AWS IAM permissions for this role
+    aws_actions = aws_roles_policies.get(role_name, [])
+    
+    # Build the app permissions policy document (tag-based)
+    app_policy_doc = {
         "Version": "2012-10-17",
-        "Statement": [{
-            "Effect": "Allow",
-            "Action": actions,
-            "Resource": "*"
-        }]
+        "Statement": []
     }
-
-    # Attach the inline policy to the group
+    
+    # Only add app permissions if there are any
+    if app_actions:
+        app_policy_doc["Statement"].append({
+            "Effect": "Allow",
+            "Action": ["application:TagBasedAccess"],  # Use a standard AWS action as placeholder
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "application:actions": app_actions  # Store app permissions as a condition
+                }
+            }
+        })
+    
+    # Add AWS IAM permissions
+    if aws_actions:
+        app_policy_doc["Statement"].append({
+            "Effect": "Allow",
+            "Action": aws_actions,
+            "Resource": "*"
+        })
+    
+    # Attach the policy to the group
     aws.iam.GroupPolicy(
         f"{role_name}-policy",
         group=group.name,
-        policy=json.dumps(policy_doc),
+        policy=json.dumps(app_policy_doc),
     )

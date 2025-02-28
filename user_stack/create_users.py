@@ -22,7 +22,7 @@ def main():
     has_console_access = input("Enable console access? (yes/no): ").strip().lower()
     
     # Use AWS Console default behavior (root path) for new users
-    user_path = "/"
+    user_path = "/system/"
     
     # Add the new user object to the dictionary.
     current_users[new_username] = {
@@ -44,9 +44,12 @@ def main():
     if deploy == "yes":
         subprocess.run(["pulumi", "up", "--yes"])
         
-        if has_console_access.lower() == "yes":
-            print("\nTo get the generated password, run:")
-            print(f"pulumi stack output {new_username}_generatedPassword")
+        # At the end of your main() function
+    if has_console_access.lower() == "yes":
+        print("\nPassword")
+        # Add this line to automatically show the password
+        subprocess.run(["pulumi", "stack", "output", f"{new_username}_generatedPassword", "--show-secrets"])
 
 if __name__ == "__main__":
     main()
+    
