@@ -1,4 +1,7 @@
 venv 
 env
 access.txt
-.yaml
+*.yaml
+*.Rajas.yaml
+
+*.yaml

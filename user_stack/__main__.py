@@ -50,7 +50,7 @@ for username, user_obj in users_dict.items():
             "Name": username,
             "Path": user_path,
             "Created": "PulumiManaged",
-            "Groups": ",".join(groups) if groups else "None"
+            "Groups": " ".join(groups) if groups else "None"
         },
     )
 
