@@ -264,16 +264,6 @@ aws iam list-groups-for-user --user-name USERNAME --profile pulumi-dev
 
 ## Troubleshooting
 
-### Access Key Issues
-
-If you need to retrieve an access key that was created but not saved:
-
-1. Delete the existing access key in AWS console
-2. Edit the user configuration to create a new key:
-   ```bash
-   python edit_user.py
-   ```
-
 ### Permission Denied Errors
 
 If you encounter permission issues:
