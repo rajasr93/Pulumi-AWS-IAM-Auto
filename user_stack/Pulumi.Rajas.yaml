@@ -1,3 +1,3 @@
 config:
-  Create_users:users: '{"Rajas": {"groups": ["Admin", "Volunteer", "Beneficiary"], "create_key": "yes", "has_console_access": "yes", "path": "/system/"}, "test1": {"groups": ["Admin"], "create_key": "yes", "has_console_access": "yes", "path": "/system/"}, "test24": {"groups": ["Admin", "Volunteer"], "create_key": "yes", "has_console_access": "yes", "path": "/system/"}}'
+  Create_users:users: '{"Admin": {"groups": [], "create_key": "yes", "has_console_access": "no", "path": "/"}, "test1": {"groups": ["Admin"], "create_key": "yes", "has_console_access": "no", "path": "/system/"}, "test24": {"groups": ["Volunteer", "Admin"], "create_key": "yes", "has_console_access": "no", "path": "/system/"}}'
   aws:region: us-east-1
