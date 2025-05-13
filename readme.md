@@ -8,9 +8,12 @@ This project provides a comprehensive solution for managing AWS IAM users and gr
 3. [Configuration](#configuration)
 4. [Group Management](#group-management)
 5. [User Management](#user-management)
-6. [Working with AWS Profiles](#working-with-aws-profiles)
-7. [Common Operations](#common-operations)
-8. [Troubleshooting](#troubleshooting)
+6. [Simplified User Management Interface](#simplified-user-management-interface)
+7. [Working with AWS Profiles](#working-with-aws-profiles)
+8. [Common Operations](#common-operations)
+9. [Troubleshooting](#troubleshooting)
+10. [Project Structure](#project-structure)
+11. [License](#license)
 
 ## Prerequisites
 
@@ -123,7 +126,7 @@ After making changes, run `pulumi up` to apply them.
 
 ## User Management
 
-The user stack manages IAM users and their group memberships.
+The user stack manages IAM users and their group memberships through individual Python scripts.
 
 ### Creating a User
 
@@ -183,6 +186,48 @@ export AWS_PROFILE=pulumi-dev
 python sync_users.py
 ```
 
+## Simplified User Management Interface
+
+The project includes a comprehensive menu-driven interface for easier user management through the `manage_users.py` script.
+
+### Starting the Management Interface
+
+```bash
+cd ../user_stack
+export AWS_PROFILE=pulumi-dev
+python manage_users.py
+```
+
+### Main Menu Options
+
+The interface provides the following options:
+
+1. **Create New User** - Interactive user creation with group assignments
+2. **Edit Existing User** - Modify group memberships for users
+3. **Delete User** - Remove users from AWS and Pulumi
+4. **Import Existing AWS User** - Import AWS users into Pulumi
+5. **Sync All AWS Users** - Synchronize all AWS users with Pulumi
+6. **Show User Credentials** - View access keys and passwords for users
+7. **Refresh Pulumi State** - Update Pulumi state to match AWS resources
+8. **Deploy Pending Changes** - Apply configuration changes to AWS
+9. **Fix User Access Key Issues** - Handle issues with user access keys
+10. **Verify AWS Credentials** - Check AWS profile authentication
+
+### Automatic Environment Validation
+
+The script performs several checks at startup:
+- Validates the AWS profile configuration
+- Verifies AWS credentials are working
+- Confirms Pulumi is properly configured
+- Validates the correct stack is selected
+
+### Managing User Credentials
+
+The interface simplifies credential management:
+- View generated passwords for console access
+- See access keys for programmatic access
+- Fix issues with access key limits (AWS permits only 2 keys per user)
+
 ## Working with AWS Profiles
 
 You can manage multiple AWS accounts by using different AWS profiles.
@@ -222,13 +267,13 @@ echo %AWS_PROFILE%  # Windows
 
 ### Profile Configuration in Scripts
 
-The `edit_user.py` and `import_user.py` scripts use the boto3 session with a profile name:
+The `edit_user.py`, `import_user.py`, and `manage_users.py` scripts use the boto3 session with a profile name:
 
 ```python
 session = boto3.Session(profile_name='pulumi-dev')
 ```
 
-To use a different profile, modify these lines or update your environment.
+To use a different profile, modify these lines or update your environment variable.
 
 ## Common Operations
 
@@ -297,6 +342,17 @@ If you have users with the same name but different paths:
 
 2. Make sure the path in your Pulumi configuration matches the path in AWS.
 
+### Access Key Limits
+
+If you receive errors about exceeding the access key limit:
+
+1. Use the `manage_users.py` interface and select option 9 to fix access key issues
+2. Or manually check and delete excess keys:
+   ```bash
+   aws iam list-access-keys --user-name USERNAME --profile pulumi-dev
+   aws iam delete-access-key --user-name USERNAME --access-key-id KEY_ID --profile pulumi-dev
+   ```
+
 ## Project Structure
 
 ```
@@ -312,6 +368,7 @@ If you have users with the same name but different paths:
     ├── edit_user.py         # Script to edit existing users
     ├── import_user.py       # Script to import AWS users
     ├── sync_users.py        # Script to sync all AWS users
+    ├── manage_users.py      # Comprehensive menu-driven interface
     ├── Pulumi.yaml          # Pulumi project file
     └── requirements.txt     # Python dependencies
 ```
