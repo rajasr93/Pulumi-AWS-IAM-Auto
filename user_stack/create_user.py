@@ -225,7 +225,7 @@ def main():
     has_console_access = input("Enable console access with password? (yes/no): ").strip().lower()
     
     # User path configuration
-    user_path = "/system/"  # Default path for created users
+    user_path = "/"  # Default path for created users
     custom_path = input(f"User path (press Enter for default '{user_path}'): ").strip()
     if custom_path:
         if not custom_path.startswith('/') or not custom_path.endswith('/'):
