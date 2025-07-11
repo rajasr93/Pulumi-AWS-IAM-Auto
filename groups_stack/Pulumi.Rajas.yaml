@@ -1,2 +1,393 @@
 config:
   aws:region: us-east-1
+  Gorups:imported_groups: |-
+    {
+      "Admins": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/Admins",
+        "created_date": "2024-03-22T21:42:03+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/PowerUserAccess"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          },
+          {
+            "policy_name": "IAM_Limited_Access",
+            "policy_arn": "arn:aws:iam::992382592437:policy/IAM_Limited_Access"
+          },
+          {
+            "policy_name": "LambdaAdminPolicy",
+            "policy_arn": "arn:aws:iam::992382592437:policy/LambdaAdminPolicy"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "APIGatewayAdmin": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/APIGatewayAdmin",
+        "created_date": "2024-11-06T17:55:25+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AmazonAPIGatewayAdministrator"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "Developers_Engineering": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/Developers_Engineering",
+        "created_date": "2025-05-13T20:06:12+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AmazonMSKReadOnlyAccess",
+          "arn:aws:iam::aws:policy/AmazonCognitoReadOnly",
+          "arn:aws:iam::aws:policy/AmazonRDSReadOnlyAccess"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "CloudTrail_Limited_Policy",
+            "policy_arn": "arn:aws:iam::992382592437:policy/CloudTrail_Limited_Policy"
+          },
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          },
+          {
+            "policy_name": "APIGatewayOperatorPolicy",
+            "policy_arn": "arn:aws:iam::992382592437:policy/APIGatewayOperatorPolicy"
+          },
+          {
+            "policy_name": "LambdaAdminPolicy",
+            "policy_arn": "arn:aws:iam::992382592437:policy/LambdaAdminPolicy"
+          },
+          {
+            "policy_name": "S3_Limited_Access_US_EU",
+            "policy_arn": "arn:aws:iam::992382592437:policy/S3_Limited_Access_US_EU"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "DevSecOps_Cloud_Engineering": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/DevSecOps_Cloud_Engineering",
+        "created_date": "2025-04-24T17:42:07+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/IAMFullAccess",
+          "arn:aws:iam::aws:policy/job-function/Billing",
+          "arn:aws:iam::aws:policy/job-function/SupportUser",
+          "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+          "arn:aws:iam::aws:policy/PowerUserAccess",
+          "arn:aws:iam::aws:policy/AmazonQDeveloperAccess",
+          "arn:aws:iam::aws:policy/AmazonEKSComputePolicy"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFACostExplorerFullAccess",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFACostExplorerFullAccess"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "DevSecOps_DevOps_Engineering": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/DevSecOps_DevOps_Engineering",
+        "created_date": "2025-04-24T17:48:29+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/CloudFrontFullAccess",
+          "arn:aws:iam::aws:policy/AmazonMSKFullAccess",
+          "arn:aws:iam::aws:policy/AmazonRDSFullAccess",
+          "arn:aws:iam::aws:policy/SecretsManagerReadWrite",
+          "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+          "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+          "arn:aws:iam::aws:policy/AWSCloudFormationFullAccess"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          },
+          {
+            "policy_name": "DevSecOps_Process_SonarQube",
+            "policy_arn": "arn:aws:iam::992382592437:policy/DevSecOps_Process_SonarQube"
+          },
+          {
+            "policy_name": "APIGatewayOperatorPolicy",
+            "policy_arn": "arn:aws:iam::992382592437:policy/APIGatewayOperatorPolicy"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "DevSecOps_Pulumi_Process": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/DevSecOps_Pulumi_Process",
+        "created_date": "2025-05-13T23:22:37+00:00",
+        "managed_policy_arns": [],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          },
+          {
+            "policy_name": "IAM_Limited_Access",
+            "policy_arn": "arn:aws:iam::992382592437:policy/IAM_Limited_Access"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "DevSecOps_RDSDB_Engineering": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/DevSecOps_RDSDB_Engineering",
+        "created_date": "2025-03-29T15:44:33+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AmazonRDSDataFullAccess",
+          "arn:aws:iam::aws:policy/service-role/AmazonRDSEnhancedMonitoringRole",
+          "arn:aws:iam::aws:policy/AmazonRDSPerformanceInsightsReadOnly"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "DevSecOps_Security_Engineering": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/DevSecOps_Security_Engineering",
+        "created_date": "2025-04-24T17:44:02+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/SecurityAudit",
+          "arn:aws:iam::aws:policy/AWSSecurityIncidentResponseFullAccess",
+          "arn:aws:iam::aws:policy/AmazonQDeveloperAccess",
+          "arn:aws:iam::aws:policy/AWSSecurityIncidentResponseReadOnlyAccess",
+          "arn:aws:iam::aws:policy/AWSSecurityIncidentResponseCaseFullAccess"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "DevSecOps_SNS": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/DevSecOps_SNS",
+        "created_date": "2025-06-26T04:01:23+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AmazonSNSFullAccess"
+        ],
+        "customer_managed_policies": [],
+        "inline_policies": {}
+      },
+      "DevSecOps_SREngineering": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/DevSecOps_SREngineering",
+        "created_date": "2025-04-24T17:47:24+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/job-function/SupportUser",
+          "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+          "arn:aws:iam::aws:policy/SecurityAudit",
+          "arn:aws:iam::aws:policy/job-function/NetworkAdministrator",
+          "arn:aws:iam::aws:policy/AmazonQDeveloperAccess",
+          "arn:aws:iam::aws:policy/AmazonEKSComputePolicy",
+          "arn:aws:iam::aws:policy/AmazonEKSBlockStoragePolicy"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "Dev_Cognito_Engineering": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/Dev_Cognito_Engineering",
+        "created_date": "2024-04-19T22:53:03+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AmazonCognitoReadOnly"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "Dev_Database_Engineering": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/Dev_Database_Engineering",
+        "created_date": "2025-04-24T17:51:03+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/job-function/DatabaseAdministrator"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "database-access-eks",
+            "policy_arn": "arn:aws:iam::992382592437:policy/database-access-eks"
+          },
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "Event_Bridge_Special_Permission": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/Event_Bridge_Special_Permission",
+        "created_date": "2025-07-01T22:05:35+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AmazonEventBridgeFullAccess"
+        ],
+        "customer_managed_policies": [],
+        "inline_policies": {}
+      },
+      "IAM_Admin_Temporary": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/IAM_Admin_Temporary",
+        "created_date": "2025-06-16T16:50:10+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/IAMFullAccess"
+        ],
+        "customer_managed_policies": [],
+        "inline_policies": {}
+      },
+      "LambdaFunctionAdmin": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/LambdaFunctionAdmin",
+        "created_date": "2024-11-06T18:08:44+00:00",
+        "managed_policy_arns": [],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          },
+          {
+            "policy_name": "LambdaAdminPolicy",
+            "policy_arn": "arn:aws:iam::992382592437:policy/LambdaAdminPolicy"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "Operators": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/Operators",
+        "created_date": "2025-04-30T00:36:46+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess",
+          "arn:aws:iam::aws:policy/AmazonMSKReadOnlyAccess",
+          "arn:aws:iam::aws:policy/CloudWatchReadOnlyAccess",
+          "arn:aws:iam::aws:policy/CloudFrontReadOnlyAccess",
+          "arn:aws:iam::aws:policy/AmazonVPCReadOnlyAccess",
+          "arn:aws:iam::aws:policy/AmazonCognitoReadOnly",
+          "arn:aws:iam::aws:policy/AmazonRDSReadOnlyAccess",
+          "arn:aws:iam::aws:policy/AWSLambda_ReadOnlyAccess"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          },
+          {
+            "policy_name": "S3_Limited_Access_US_EU",
+            "policy_arn": "arn:aws:iam::992382592437:policy/S3_Limited_Access_US_EU"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "RDSDB-Postgres-admin": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/RDSDB-Postgres-admin",
+        "created_date": "2025-05-20T16:41:13+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          },
+          {
+            "policy_name": "RDS_Admin_Policy",
+            "policy_arn": "arn:aws:iam::992382592437:policy/RDS_Admin_Policy"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "RDSDB-Postgres-Dev": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/RDSDB-Postgres-Dev",
+        "created_date": "2025-05-12T16:05:30+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AmazonRDSPerformanceInsightsReadOnly",
+          "arn:aws:iam::aws:policy/AmazonRDSPerformanceInsightsFullAccess"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          },
+          {
+            "policy_name": "RDSDB-EU-Dev",
+            "policy_arn": "arn:aws:iam::992382592437:policy/RDSDB-EU-Dev"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "RDSDB-Postgres-ReadOnly": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/RDSDB-Postgres-ReadOnly",
+        "created_date": "2025-05-20T16:44:07+00:00",
+        "managed_policy_arns": [],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          },
+          {
+            "policy_name": "RDSDB-Postgres-IAM",
+            "policy_arn": "arn:aws:iam::992382592437:policy/RDSDB-Postgres-IAM"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "RDSDBAdmin": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/RDSDBAdmin",
+        "created_date": "2024-11-06T18:13:44+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AmazonRDSFullAccess"
+        ],
+        "customer_managed_policies": [
+          {
+            "policy_name": "SFA_RestrictToUsEast1AndEuWest1",
+            "policy_arn": "arn:aws:iam::992382592437:policy/SFA_RestrictToUsEast1AndEuWest1"
+          },
+          {
+            "policy_name": "RDS_Admin_Policy",
+            "policy_arn": "arn:aws:iam::992382592437:policy/RDS_Admin_Policy"
+          }
+        ],
+        "inline_policies": {}
+      },
+      "Super_Admins": {
+        "path": "/",
+        "arn": "arn:aws:iam::992382592437:group/Super_Admins",
+        "created_date": "2025-04-29T23:10:31+00:00",
+        "managed_policy_arns": [
+          "arn:aws:iam::aws:policy/AdministratorAccess",
+          "arn:aws:iam::aws:policy/job-function/Billing"
+        ],
+        "customer_managed_policies": [],
+        "inline_policies": {}
+      }
+    }
