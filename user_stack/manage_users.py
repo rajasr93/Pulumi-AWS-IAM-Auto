@@ -163,8 +163,6 @@ def print_header():
     print("=" * 80)
     print("               AWS IAM USER AND GROUP MANAGEMENT HELPER")
     print("=" * 80)
-    print("This tool helps you manage AWS IAM users and groups with Pulumi")
-    print("=" * 80)
     print()
 
 def validate_username(username):
